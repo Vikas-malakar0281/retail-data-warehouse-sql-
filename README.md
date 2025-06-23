@@ -1,6 +1,6 @@
 # 🏬 Retail Data Warehouse Project (SQL Server + Power BI)
 
-An end-to-end Data Warehouse project designed for a realistic retail business scenario. Built using SQL Server 2022 and Power BI, this project demonstrates modern data warehousing concepts using a layered architecture with custom-generated sales, product, inventory, and customer data.
+An end-to-end Data Warehouse project designed for a realistic retail business scenario. Built using SQL Server 2022 and Power BI, this project demonstrates modern data warehousing concepts using a layered architecture with ChatGPT-generated sales, product, inventory, and customer data.
 
 ---
 
@@ -50,11 +50,11 @@ The data is generated using Faker and NumPy to simulate realistic transactions, 
 
 ## 🛠 Tools & Tech Stack
 
-- **SQL Server 2022** – Data warehouse engine
-- **SSMS** – SQL development & debugging
-- **Power BI** – Dashboard and reporting
-- **Git/GitHub** – Version control
-- **Python (Faker)** – Data generation (optional)
+- **SQL Server 2022**        – Data warehouse engine
+- **SSMS**                   – SQL development & debugging
+- **Power BI**               – Dashboard and reporting
+- **Git/GitHub**             – Version control
+- **Python (Faker)**        – Data generation (optional)
 
 ---
 
@@ -105,4 +105,23 @@ The dataset and transformations have been customized to create a unique project 
 1. Clone this repo  
 2. Create a database in SQL Server:
    ```sql
-   CREATE DATABASE RetailDW;
+CREATE DATABASE RetailDW;
+
+Execute scripts from /sql/staging/ to create and load tables
+
+Run transformations from /sql/transformations/
+
+Build fact/dim tables from /sql/reporting/
+
+Open Power BI and connect to the final database layer
+
+
+Contact
+If you'd like to collaborate or ask questions:
+
+GitHub: https://github.com/Vikas-malakar0281
+
+LinkedIn: www.linkedin.com/in/vikas-malakar-5a9446354
+
+🪪 License
+This project is open-source and licensed under the MIT License.
