@@ -120,7 +120,7 @@ The dataset and transformations have been customized to create a unique project 
 ## 📬 Contact
 If you'd like to collaborate or ask questions:
 
-GitHub: https://github.com/Vikas-malakar0281
+
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/vikas-malakar-5a9446354)
 
 
