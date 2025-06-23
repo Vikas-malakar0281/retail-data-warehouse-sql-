@@ -17,13 +17,13 @@ An end-to-end Data Warehouse project designed for a realistic retail business sc
 
 CSV Data (Raw)
        ↓
-[ Staging Tables (stg_) ]   [Bronze LAyer] #
+[ Staging Tables (stg_) ]   [Bronze LAyer] ##
        ↓
-[ Clean Tables (int_) ]     [Silver Layer] #
+[ Clean Tables (int_) ]     [Silver Layer] ##
       ↓
-[ Fact & Dimension Tables (dw_) ]  [Gold Layer] #
+[ Fact & Dimension Tables (dw_) ]  [Gold Layer] ##
       ↓
-[ Power BI Dashboard ]    [Visulization] #
+[ Power BI Dashboard ]    [Visulization] ##
 
 
 - **Staging (stg_)**: Raw data loaded from CSV files
@@ -54,7 +54,6 @@ The data is generated using Faker and NumPy to simulate realistic transactions, 
 - **SSMS**                   – SQL development & debugging
 - **Power BI**               – Dashboard and reporting
 - **Git/GitHub**             – Version control
-- **Python (Faker)**        – Data generation (optional)
 
 ---
 
