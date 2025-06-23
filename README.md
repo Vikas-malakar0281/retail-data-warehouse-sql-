@@ -113,7 +113,7 @@ The dataset and transformations have been customized to create a unique project 
 
 ---
 
-Contact
+## 📬 Contact
 If you'd like to collaborate or ask questions:
 
 GitHub: https://github.com/Vikas-malakar0281
