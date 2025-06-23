@@ -1,6 +1,6 @@
 # 🧾 Naming Conventions
 
-This document outlines the naming conventions used across schemas, tables, views, columns, and stored procedures in the **Retail Data Warehouse** project. Consistent naming ensures maintainability, readability, and alignment across the data pipeline.
+This document outlines the naming conventions used in the **Retail Data Warehouse Project**, specifically designed around the provided dataset. It ensures clarity, consistency, and professional structure across staging, intermediate, and business layers.
 
 ---
 
@@ -19,95 +19,87 @@ This document outlines the naming conventions used across schemas, tables, views
 
 ## 🔧 General Principles
 
-- **Naming style:** Use `snake_case` (lowercase with underscores).
-- **Language:** All object names must be in **English**.
-- **Avoid reserved words:** Never use SQL reserved keywords as identifiers.
-- **Consistency:** Naming should reflect the layer and business context.
+- **Style:** Use `snake_case` (lowercase, words separated by underscores)
+- **Language:** Use **English** for all naming
+- **Reserved Words:** Avoid SQL reserved keywords
+- **Consistency:** Reflect data origin and layer clearly
 
 ---
 
 ## 🗂 Table Naming Conventions
 
-### 🥉 Bronze Layer (Raw Staging)
+### 🥉 Bronze Layer (Staging)
 
-- **Pattern:** `<source>_<entity>`
-- **Rules:**
-  - Start with the **source system** name.
-  - Keep the **original table/entity name** from source (no renaming).
+- **Pattern:** `csv_<entity>`
+- **Purpose:** Raw data loaded directly from CSVs with no transformation.
 - **Examples:**
-  - `crm_customer_info` → Raw customer info from CRM system
-  - `pos_sales_data` → Raw sales data from Point-of-Sale
+  - `csv_customers`
+  - `csv_products`
+  - `csv_sales`
+  - `csv_inventory`
+  - `csv_stores`
+  - `csv_calendar`
 
----
+### 🥈 Silver Layer (Cleaned & Transformed)
 
-### 🥈 Silver Layer (Cleaned/Transformed)
-
-- **Pattern:** `<source>_<entity>`
-- **Rules:**
-  - Retain the source prefix.
-  - Tables reflect cleaned, deduplicated, or joined data.
+- **Pattern:** `int_<entity>`
+- **Purpose:** Cleaned, deduplicated, and standardized tables.
 - **Examples:**
-  - `crm_customer_info` → Deduplicated and cleaned customer data
-  - `erp_product_catalog` → Transformed product catalog from ERP
+  - `int_customers`
+  - `int_products`
+  - `int_sales`
+  - `int_inventory`
+  - `int_stores`
+  - `int_calendar`
 
----
+### 🥇 Gold Layer (Business/Reporting Layer)
 
-### 🥇 Gold Layer (Business Layer - Fact & Dimension)
-
-- **Pattern:** `<category>_<entity>`
-- **Rules:**
-  - Use business-aligned terms.
-  - Prefix indicates table type: `dim_`, `fact_`, `report_`, etc.
+- **Pattern:** `dim_<entity>` for dimension tables  
+                 `fact_<entity>` for fact tables
+- **Purpose:** Business-aligned model for reporting and analysis.
 - **Examples:**
-  - `dim_customer` → Dimension table for customer master
-  - `fact_sales` → Fact table for sales transactions
-  - `report_sales_monthly` → Reporting table with aggregated monthly sales
-
----
-
-### 🧾 Glossary of Category Prefixes
-
-| Prefix     | Description            | Example                 |
-|------------|------------------------|-------------------------|
-| `dim_`     | Dimension table         | `dim_product`, `dim_store` |
-| `fact_`    | Fact table              | `fact_inventory`, `fact_sales` |
-| `report_`  | Reporting table         | `report_customers`, `report_sales_daily` |
+  - `dim_customer`
+  - `dim_product`
+  - `dim_store`
+  - `dim_date`
+  - `fact_sales`
+  - `fact_inventory_snapshot`
 
 ---
 
 ## 🔑 Column Naming Conventions
 
-### 🔹 Surrogate Keys
+### Surrogate Keys
 
 - **Pattern:** `<table>_key`
-- **Use:** For primary keys in dimension tables.
-- **Example:** `customer_key` in `dim_customer`
+- **Usage:** Primary keys for dimension tables
+- **Examples:**
+  - `customer_key` in `dim_customer`
+  - `product_key` in `dim_product`
 
-### ⚙️ Technical Columns
+### Technical Columns
 
 - **Pattern:** `dwh_<column_name>`
-- **Use:** For metadata columns (e.g., load date, record versioning).
+- **Usage:** System-generated or metadata tracking
 - **Examples:**
-  - `dwh_load_date` → Date the record was loaded into the DWH
-  - `dwh_insert_user` → User or job that inserted the record
+  - `dwh_load_date` → Date record was loaded
+  - `dwh_insert_job` → ETL job or process
 
 ---
 
 ## 🛠 Stored Procedures
 
 - **Pattern:** `load_<layer>`
-- **Use:** For ETL stored procedures related to each DWH layer.
 - **Examples:**
-  - `load_bronze` → Procedure to load data into Bronze layer
-  - `load_silver` → Procedure to transform and load into Silver layer
-  - `load_gold` → Procedure to load data into fact and dimension tables
+  - `load_bronze` → Load CSVs to staging
+  - `load_silver` → Transform staging to clean layer
+  - `load_gold` → Build fact and dimension tables
 
 ---
 
-### ✅ Summary
+## ✅ Summary
 
-Using structured naming conventions improves:
-- Clarity for developers and analysts
-- Ease of documentation
-- Onboarding for new team members
-- Automated pipeline management and testing
+By following this naming convention:
+- Your SQL code will be more readable
+- ETL pipelines are easier to maintain
+- Your project structure aligns with professional data engineering standards
