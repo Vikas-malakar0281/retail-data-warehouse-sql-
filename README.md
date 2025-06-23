@@ -62,25 +62,25 @@ The data is generated using Faker and NumPy to simulate realistic transactions, 
 ## 📁 Project Structure
 ```
 
-retail-data-warehouse-sql/<br>
+retail-data-warehouse-sql/
 |
-├── datasets/                               # CSV files for staging<br>
+├── datasets/                               # CSV files for staging
 |
-├── sql/<br>
+├── sql
 |   |
-│   ├── [Bronze Layer] Staging/             # Create & load raw tables<br>
+│   ├── [Bronze Layer] Staging/             # Create & load raw tables
 │   |   
-|   ├── [Silver Layer] Transformations/     # Data cleaning and joins<br>
+|   ├── [Silver Layer] Transformations/     # Data cleaning and joins
 |   |
-│   └── [Gold Layer] Reporting/             # Create fact & dimension tables<br>
+│   └── [Gold Layer] Reporting/             # Create fact & dimension tables
 |
-├── Power BI/                                # PBIX file and screenshots<br>
+├── Power BI/                                # PBIX file and screenshots
 |
-├── Diagrams/                               # ERD and architecture visuals<br>
+├── Diagrams/                               # ERD and architecture visuals
 |
-|── README.md                               # You're here!<br>
+|── README.md                               # You're here!
 |
-└── LICENSE                                 # MIT License<br>
+└── LICENSE                                 # MIT License
 
 ```
 
