@@ -59,6 +59,7 @@ The data is generated using Faker and NumPy to simulate realistic transactions, 
 ---
 
 ## 📁 Project Structure
+```
 
 retail-data-warehouse-sql/<br>
 |
@@ -80,7 +81,7 @@ retail-data-warehouse-sql/<br>
 |
 └── LICENSE                                 # MIT License<br>
 
-
+```
 
 ---
 
