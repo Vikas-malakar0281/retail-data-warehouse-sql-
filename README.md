@@ -1,3 +1,5 @@
+Portfolio-ready data engineering project using SQL Server, T-SQL, and Power BI to model a real-world retail data warehouse.
+
 # 🏬 Retail Data Warehouse Project (SQL Server + Power BI)
 
 An end-to-end Data Warehouse project designed for a realistic retail business scenario. Built using SQL Server 2022 and Power BI, this project demonstrates modern data warehousing concepts using a layered architecture with ChatGPT-generated sales, product, inventory, and customer data.
