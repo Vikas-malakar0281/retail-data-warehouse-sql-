@@ -100,6 +100,17 @@ This document outlines the naming conventions used in the **Retail Data Warehous
 ## ✅ Summary
 
 By following this naming convention:
-- Your SQL code will be more readable
-- ETL pipelines are easier to maintain
-- Your project structure aligns with professional data engineering standards
+
+- ✅ Your SQL code will be more readable  
+- 🧰 ETL pipelines are easier to maintain  
+- 🧱 Your project structure aligns with professional data engineering standards  
+
+| 📁 CSV File       | 🥉 Bronze Table     | 🥈 Silver Table     | 🥇 Gold Object             |
+|------------------|---------------------|---------------------|-----------------------------|
+| `customers.csv`   | `stg_customers`     | `int_customers`     | `dim_customer`              |
+| `products.csv`    | `stg_products`      | `int_products`      | `dim_product`               |
+| `sales.csv`       | `stg_sales`         | `int_sales`         | `fact_sales`                |
+| `inventory.csv`   | `stg_inventory`     | `int_inventory`     | `fact_inventory_snapshot`   |
+| `calendar.csv`    | `stg_calendar`      | `int_calendar`      | `dim_date`                  |
+| `stores.csv`      | `stg_stores`        | `int_stores`        | `dim_store`                 |
+
