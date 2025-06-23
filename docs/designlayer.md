@@ -15,3 +15,15 @@ This project implements a three-tier **Medallion Architecture** to structure the
 | **Target Audience**  | Data Engineers                                      | Data Engineers, Data Analysts                               | Data Analysts                                                         |
 
 ---
+## 🔁 Layer Flow
+
+```text
+CSV Files (Raw)
+   ↓
+Bronze Layer — Raw Staging Tables (stg_)
+   ↓
+Silver Layer — Cleaned/Transformed Tables (int_)
+   ↓
+Gold Layer — Fact & Dimension Views (dw_)
+   ↓
+Power BI Dashboards / Analytical Queries
