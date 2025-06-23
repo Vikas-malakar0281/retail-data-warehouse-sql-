@@ -111,6 +111,7 @@ The dataset and transformations have been customized to create a unique project 
 7. Build fact/dim tables from /sql/reporting/
 8. Open Power BI and connect to the final database layer
 
+---
 
 Contact
 If you'd like to collaborate or ask questions:
