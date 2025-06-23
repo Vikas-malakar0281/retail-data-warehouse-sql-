@@ -62,7 +62,7 @@ The data is generated using Faker and NumPy to simulate realistic transactions, 
 
 retail-data-warehouse-sql/ <br>
 │ <br>
-├── datasets/                               # CSV files for staging <br>
+├── datasets/                               # CSV files for staging<br>
 |<br>
 ├── sql/<br>  
 │ ├── [Bronze Layer] Staging/                # Create & load raw tables <br>  
