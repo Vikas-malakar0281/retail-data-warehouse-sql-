@@ -104,16 +104,12 @@ The dataset and transformations have been customized to create a unique project 
 
 1. Clone this repo  
 2. Create a database in SQL Server:
-   ```sql
-CREATE DATABASE RetailDW;
-
-Execute scripts from /sql/staging/ to create and load tables
-
-Run transformations from /sql/transformations/
-
-Build fact/dim tables from /sql/reporting/
-
-Open Power BI and connect to the final database layer
+3. CREATE DATABASE RetailDW;
+4. Execute scripts from /sql/staging/ to create and load tables
+5. Execute scripts from /sql/staging/ to create and load tables
+6. Run transformations from /sql/transformations/
+7. Build fact/dim tables from /sql/reporting/
+8. Open Power BI and connect to the final database layer
 
 
 Contact
