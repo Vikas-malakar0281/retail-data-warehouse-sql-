@@ -1,4 +1,3 @@
-Portfolio-ready data engineering project using SQL Server, T-SQL, and Power BI to model a real-world retail data warehouse.
 
 # 🏬 Retail Data Warehouse Project (SQL Server + Power BI)
 
