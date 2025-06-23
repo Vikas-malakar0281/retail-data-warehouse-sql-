@@ -15,15 +15,15 @@ An end-to-end Data Warehouse project designed for a realistic retail business sc
 
 ## 🧱 Architecture
 
-CSV Data (Raw)
+CSV Data (Raw) <br>
     ↓
-[ Staging Tables (stg_) ]         → Bronze Layer
+[ Staging Tables (stg_) ]         → Bronze Layer <br>
     ↓
-[ Clean Tables (int_) ]           → Silver Layer
+[ Clean Tables (int_) ]           → Silver Layer <br>
     ↓
-[ Fact & Dimension Tables (dw_) ] → Gold Layer
+[ Fact & Dimension Tables (dw_) ] → Gold Layer <br>
     ↓
-[ Power BI Dashboard ]            → Visualization Layer
+[ Power BI Dashboard ]            → Visualization Layer <br>
 
 
 
