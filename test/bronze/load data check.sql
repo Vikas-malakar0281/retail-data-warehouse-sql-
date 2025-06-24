@@ -11,12 +11,13 @@
 PRINT '====================== ROW COUNTS ======================';
 
 -- Row count checks
-SELECT 'csv_calendar' AS TableName, COUNT(*) AS RowCount FROM bronze.csv_calendar;
-SELECT 'csv_customers' AS TableName, COUNT(*) AS RowCount FROM bronze.csv_customers;
-SELECT 'csv_inventory' AS TableName, COUNT(*) AS RowCount FROM bronze.csv_inventory;
-SELECT 'csv_products' AS TableName, COUNT(*) AS RowCount FROM bronze.csv_products;
-SELECT 'csv_sales' AS TableName, COUNT(*) AS RowCount FROM bronze.csv_sales;
-SELECT 'csv_stores' AS TableName, COUNT(*) AS RowCount FROM bronze.csv_stores;
+select count(*)FROM bronze.csv_calendar;
+select count(*)FROM bronze.csv_customers;
+select count(*)FROM bronze.csv_inventory;
+select count(*)FROM bronze.csv_products;
+select count(*)FROM bronze.csv_sales;
+select count(*)FROM bronze.csv_stores;
+
 
 PRINT '====================== TOP 5 RECORDS ======================';
 
