@@ -33,24 +33,24 @@ This document outlines the naming conventions used in the **Retail Data Warehous
 - **Pattern:** `csv_<entity>`
 - **Purpose:** Raw data loaded directly from CSVs with no transformation.
 - **Examples:**
-  - `csv_customers`
-  - `csv_products`
-  - `csv_sales`
-  - `csv_inventory`
-  - `csv_stores`
-  - `csv_calendar`
+  - `bronze.csv_customers`
+  - `bronze.csv_products`
+  - `bronze.csv_sales`
+  - `bronze.csv_inventory`
+  - `bronze.csv_stores`
+  - `bronze.csv_calendar`
 
 ### 🥈 Silver Layer (Cleaned & Transformed)
 
 - **Pattern:** `int_<entity>`
 - **Purpose:** Cleaned, deduplicated, and standardized tables.
 - **Examples:**
-  - `int_customers`
-  - `int_products`
-  - `int_sales`
-  - `int_inventory`
-  - `int_stores`
-  - `int_calendar`
+  - `silver.int_customers`
+  - `silverint_products`
+  - `silverint_sales`
+  - `silverint_inventory`
+  - `silverint_stores`
+  - `silverint_calendar`
 
 ### 🥇 Gold Layer (Business/Reporting Layer)
 
