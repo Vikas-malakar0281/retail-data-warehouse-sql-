@@ -46,11 +46,11 @@ This document outlines the naming conventions used in the **Retail Data Warehous
 - **Purpose:** Cleaned, deduplicated, and standardized tables.
 - **Examples:**
   - `silver.int_customers`
-  - `silverint_products`
-  - `silverint_sales`
-  - `silverint_inventory`
-  - `silverint_stores`
-  - `silverint_calendar`
+  - `silver.int_products`
+  - `silver.int_sales`
+  - `silver.int_inventory`
+  - `silver.int_stores`
+  - `silver.int_calendar`
 
 ### 🥇 Gold Layer (Business/Reporting Layer)
 
