@@ -2,7 +2,7 @@
 ===============================================================================
 DDL Script: Silver Tables (Raw Data cleaning and Transformation Layer)
 ===============================================================================
-📌Procedure: [silver].[load_proc]
+📌Procedure: [silver].[load_proc] Load Silver Layer (Bronze -> Silver)
 -------------------------------------------------------------------------------
   Purpose:   This procedure populates the Silver Layer tables by cleansing,
            transforming, and loading data from the Bronze Layer.
@@ -11,6 +11,10 @@ DDL Script: Silver Tables (Raw Data cleaning and Transformation Layer)
 ⚠️ Warning:
     This script drops existing silver.* tables if they already exist.
     All current data will be lost — use with caution in production environments.
+
+-------------------------------------------------------------------------------
+Usage:
+    EXEC silver.load_script;
 ===============================================================================
 */
 USE [retail_data_warehouse_sql];
