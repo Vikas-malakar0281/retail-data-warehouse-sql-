@@ -1,15 +1,9 @@
--- ================================================
--- Stored Procedure: [silver].[load_proc]
--- Purpose: Load cleaned and transformed data from bronze to silver layer.
--- Adds safety checks and error handling to prevent date conversion failures.
--- ================================================
-
-USE [retail_data_warehouse_sql];
+USE [retail_data_warehouse_sql]
 GO
-
-SET ANSI_NULLS ON;
+/****** Object:  StoredProcedure [silver].[load_proc]    Script Date: 7/4/2025 11:59:09 AM ******/
+SET ANSI_NULLS ON
 GO
-SET QUOTED_IDENTIFIER ON;
+SET QUOTED_IDENTIFIER ON
 GO
 
 ALTER PROCEDURE [silver].[load_proc] AS
@@ -153,13 +147,13 @@ BEGIN
 
         INSERT INTO silver.csv_sales (
             sales_id, date, sale_by_month, sale_by_year, store_id, product_id, product_name,
-            customer_id, quantity, unit_price, net_price, profit, discount, total_price
+            customer_id, quantity, unit_price, net_price, gross_profit, discount, total_price
         )
         SELECT 
             s.sales_id,
             s.date,
-            CASE WHEN c.date IS NOT NULL THEN DATEFROMPARTS(YEAR(c.date), MONTH(c.date), 1) ELSE NULL END,
-            CASE WHEN c.date IS NOT NULL THEN DATEFROMPARTS(YEAR(c.date), 1, 1) ELSE NULL END,
+            FORMAT(c.date, 'MMMM') AS sale_by_month,  
+            YEAR(c.date) AS sale_by_year,
             s.store_id,
             s.product_id,
             p.product_name,
@@ -167,7 +161,7 @@ BEGIN
             s.quantity,
             s.unit_price,
             (s.unit_price * s.quantity) - s.discount,
-            (s.unit_price - p.cost) * s.quantity,
+            (s.unit_price - p.cost) * s.quantity AS gross_profit,
             s.discount,
             s.total_price
         FROM bronze.csv_sales s
@@ -213,7 +207,7 @@ BEGIN
     END TRY
     BEGIN CATCH
         PRINT '==========================================';
-        PRINT '❌ ERROR OCCURRED DURING LOADING';
+        PRINT '❌ ERROR OCCURRED DURING LOADING SILVER LAYER';
         PRINT 'Message: ' + ERROR_MESSAGE();
         PRINT 'Number : ' + CAST(ERROR_NUMBER() AS NVARCHAR);
         PRINT 'State  : ' + CAST(ERROR_STATE() AS NVARCHAR);
