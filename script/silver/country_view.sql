@@ -1,4 +1,22 @@
-USE [retail_data_warehouse_sql];
+/*==================================================================
+    Purpose : 
+        This script creates or updates the view [silver].[vw_store_country] 
+        which extracts and separates country information and branch details 
+        from the raw 'country' column in the bronze.csv_stores table.
+
+-------------------------------------------------------------------
+    ⚠️ Warning :
+        This script replaces the existing view if it exists. Ensure that 
+        no downstream processes are dependent on its current structure 
+        before running.
+
+-------------------------------------------------------------------
+    ✅ Advice :
+        Test the transformation logic with sample data from 
+        bronze.csv_stores before applying this in production.
+==================================================================*/
+
+USE [retail_data_warehouse_sql]; 
 GO
 
 SET ANSI_NULLS ON;
@@ -7,12 +25,12 @@ GO
 SET QUOTED_IDENTIFIER ON;
 GO
 
-ALTER VIEW [silver].[vw_store_country] AS
+CREATE OR ALTER VIEW [silver].[vw_store_country] AS
 SELECT 
     store_id,
     country,
 
-    -- Extract the main country before the first comma or ' and '
+    -- Extract the main country name (before comma or ' and ')
     LTRIM(RTRIM(
         CASE 
             WHEN CHARINDEX(',', country) > 0 THEN 
@@ -24,9 +42,9 @@ SELECT
     )) AS c_country,
 
     -- Extract branch1:
-    -- If both comma and ' and ' are present, take the middle portion (between comma and 'and')
-    -- If only comma is present, take everything after the comma
-    -- Otherwise, return 'n/a'
+    -- If both comma and 'and' exist, get substring between them
+    -- If only comma exists, get substring after comma
+    -- Else return 'n/a'
     LTRIM(RTRIM(
         CASE 
             WHEN CHARINDEX(',', country) > 0 AND CHARINDEX(' and ', country) > CHARINDEX(',', country) THEN
@@ -42,7 +60,7 @@ SELECT
     )) AS branch1,
 
     -- Extract branch2:
-    -- Only if 'and' exists after a comma
+    -- If 'and' exists after a comma, get substring after 'and'
     LTRIM(RTRIM(
         CASE 
             WHEN CHARINDEX(',', country) > 0 AND CHARINDEX(' and ', country) > CHARINDEX(',', country) THEN
@@ -53,5 +71,3 @@ SELECT
 
 FROM bronze.csv_stores;
 GO
-
-
