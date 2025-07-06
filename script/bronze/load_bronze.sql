@@ -1,4 +1,11 @@
-﻿/*
+USE [retail_data_warehouse_sql]
+GO
+/****** Object:  StoredProcedure [bronze].[load_bronze]    Script Date: 6/30/2025 4:00:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+/*
 ===============================================================================
 Stored Procedure: Load Bronze Layer (Source -> Bronze)
 ===============================================================================
@@ -17,7 +24,7 @@ Usage Example:
     EXEC bronze.load_bronze;
 ===============================================================================
 */
-CREATE OR ALTER PROCEDURE bronze.load_bronze AS
+ALTER   PROCEDURE [bronze].[load_bronze] AS
 BEGIN
     DECLARE @start_time DATETIME, @end_time DATETIME, @batch_start_time DATETIME, @batch_end_time DATETIME; 
 
@@ -110,16 +117,19 @@ BEGIN
         ------------------------------------------------
         PRINT '>> Truncating and Loading: bronze.csv_stores';
         ------------------------------------------------
-        SET @start_time = GETDATE();
-        TRUNCATE TABLE bronze.csv_stores;
+        SET @start_time = GETDATE()
+       TRUNCATE TABLE bronze.csv_stores;
+
         BULK INSERT bronze.csv_stores
         FROM 'C:\SQL2022\retail-data-warehouse-sql-\datasets\stores.csv'
         WITH (
+            FORMAT = 'CSV',            -- enables proper parsing of quoted fields
             FIRSTROW = 2,
-            FIELDTERMINATOR = ',',
-            ROWTERMINATOR = '\n',
-            TABLOCK
+            FIELDQUOTE = '"',          -- required since store_name and country are contain commas
+            ROWTERMINATOR = '0x0a',    -- explicitly handle Unix-style newlines
+            TABLOCK                     -- improve bulk load performance
         );
+
         SET @end_time = GETDATE();
         PRINT '>> Load Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
 
