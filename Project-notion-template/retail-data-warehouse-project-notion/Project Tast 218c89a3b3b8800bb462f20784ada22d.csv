@@ -1,0 +1,27 @@
+﻿DWH EPIC,Name,ch
+Requirement and Analysis (Requirement%20and%20Analysis%20218c89a3b3b88063b8fdf6ba1bcd522a.md),Analyze & Understand The Requirement,Yes
+Design and Data Architecture (Design%20and%20Data%20Architecture%20218c89a3b3b88034902ce73067307220.md),Choose data management Approach,Yes
+Design and Data Architecture (Design%20and%20Data%20Architecture%20218c89a3b3b88034902ce73067307220.md)," Design the Layers",Yes
+Design and Data Architecture (Design%20and%20Data%20Architecture%20218c89a3b3b88034902ce73067307220.md),Draw the Data Architecture (Draw.io),Yes
+Project Initialization (Project%20Initialization%20218c89a3b3b880f8b78dc45e0762ee79.md),Create Detail Project Tasks (Notion),Yes
+Project Initialization (Project%20Initialization%20218c89a3b3b880f8b78dc45e0762ee79.md),Define Project Naming Conventions,Yes
+Project Initialization (Project%20Initialization%20218c89a3b3b880f8b78dc45e0762ee79.md),Create Git Repo & Prepare the Structure,Yes
+Project Initialization (Project%20Initialization%20218c89a3b3b880f8b78dc45e0762ee79.md),Create DB & Schemas,Yes
+Build Bronze Layer  (Build%20Bronze%20Layer%20218c89a3b3b880afb5c6fa9c68006915.md),Analyzing:  Source System,Yes
+Build Bronze Layer  (Build%20Bronze%20Layer%20218c89a3b3b880afb5c6fa9c68006915.md),"Coding: Data Ingestion ",Yes
+Build Bronze Layer  (Build%20Bronze%20Layer%20218c89a3b3b880afb5c6fa9c68006915.md),Validating: Data Completeness,Yes
+Build Bronze Layer  (Build%20Bronze%20Layer%20218c89a3b3b880afb5c6fa9c68006915.md),Document: Data Draw Flow (Draw.io),Yes
+Build Bronze Layer  (Build%20Bronze%20Layer%20218c89a3b3b880afb5c6fa9c68006915.md),Commit Code In Git Repo,Yes
+Build Silver Layer (Build%20Silver%20Layer%20218c89a3b3b8800bb303d20c474abc64.md),Analyzing: Explore & Understand Data,Yes
+Build Silver Layer (Build%20Silver%20Layer%20218c89a3b3b8800bb303d20c474abc64.md),Documentation: Draw Data Integration (Data.io),Yes
+Build Silver Layer (Build%20Silver%20Layer%20218c89a3b3b8800bb303d20c474abc64.md),Coding: Data cleansing,Yes
+Build Silver Layer (Build%20Silver%20Layer%20218c89a3b3b8800bb303d20c474abc64.md),Validating: Data Correctness Checks,Yes
+Build Silver Layer (Build%20Silver%20Layer%20218c89a3b3b8800bb303d20c474abc64.md),Documentation: Extended Data flow (draw.io),Yes
+Build Silver Layer (Build%20Silver%20Layer%20218c89a3b3b8800bb303d20c474abc64.md),Commit the code in Git Repo,Yes
+Build Gold Layer (Build%20Gold%20Layer%20218c89a3b3b880b09ea2e00f89a2fd3a.md),Analyzing: Explore Business Objects,Yes
+Build Gold Layer (Build%20Gold%20Layer%20218c89a3b3b880b09ea2e00f89a2fd3a.md),Coding: Data Integration,Yes
+Build Gold Layer (Build%20Gold%20Layer%20218c89a3b3b880b09ea2e00f89a2fd3a.md),Validating: data Integration Checks,Yes
+Build Gold Layer (Build%20Gold%20Layer%20218c89a3b3b880b09ea2e00f89a2fd3a.md),Documentation: Draw Data Model OF Star Schema (Draw.io),Yes
+Build Gold Layer (Build%20Gold%20Layer%20218c89a3b3b880b09ea2e00f89a2fd3a.md),Document: Create Data Catalog,Yes
+Build Gold Layer (Build%20Gold%20Layer%20218c89a3b3b880b09ea2e00f89a2fd3a.md),Document: Extend Data Flow (Draw.io),Yes
+Build Gold Layer (Build%20Gold%20Layer%20218c89a3b3b880b09ea2e00f89a2fd3a.md),Commit Code in Git Repo,Yes

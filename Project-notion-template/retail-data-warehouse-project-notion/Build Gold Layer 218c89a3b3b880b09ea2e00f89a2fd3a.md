@@ -1,0 +1,5 @@
+# Build Gold Layer
+
+Index: 6
+Project Tast: Analyzing: Explore Business Objects (Analyzing%20Explore%20Business%20Objects%20218c89a3b3b880b7bb9af5c3aad90f47.md), Coding: Data Integration (Coding%20Data%20Integration%20218c89a3b3b880e99274e96c8f92bf37.md), Validating: data Integration Checks (Validating%20data%20Integration%20Checks%20218c89a3b3b880569cc8d2d806cb302c.md), Documentation: Draw Data Model OF Star Schema (Draw.io) (Documentation%20Draw%20Data%20Model%20OF%20Star%20Schema%20(Draw%20218c89a3b3b880f49594e143b2925c50.md), Document: Create Data Catalog (Document%20Create%20Data%20Catalog%20218c89a3b3b880409391e8211650a402.md), Document: Extend Data Flow (Draw.io) (Document%20Extend%20Data%20Flow%20(Draw%20io)%20218c89a3b3b880d28b6ef0dded8b07fa.md), Commit Code in Git Repo (Commit%20Code%20in%20Git%20Repo%20218c89a3b3b880f8afbdcf83d9ac8ebb.md)
+Rollup: 1
