@@ -22,7 +22,7 @@ CSV Data (Raw) <br>
     ↓ <br>
 [ Clean Tables (int_) ]           → Silver Layer <br>
     ↓  <br>
-[ Fact & Dimension Tables (dw_) ] → Gold Layer <br>
+[ Fact & Dimension Tables (dim_) ] → Gold Layer <br>
     ↓  <br>
 [ Power BI Dashboard ]            → Visualization Layer <br>
 
