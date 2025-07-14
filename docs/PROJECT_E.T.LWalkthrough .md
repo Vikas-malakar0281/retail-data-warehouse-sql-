@@ -1,5 +1,3 @@
-# E.T.L Walkthrough
-
 # End-to-End ETL Walkthrough for Retail Data Warehouse
 
 ## Overview
