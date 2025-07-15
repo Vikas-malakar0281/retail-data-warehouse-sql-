@@ -55,6 +55,10 @@ SELECT *
 FROM silver.csv_customers
 WHERE customer_id = 1050;
 
+/* 
+ TO check the last two indexes in the gold.indexes.sql script
+*/
+
 -- Test for IX_stores_franchise
 SELECT *
 FROM silver.csv_stores
