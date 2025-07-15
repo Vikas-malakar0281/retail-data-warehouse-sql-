@@ -2,7 +2,7 @@ USE retail_data_warehouse_sql;
 GO
 
 -- ======================================
--- 🔍 1. Preview Sample Records from Each Table
+--  1. Preview Sample Records from Each Table
 -- ======================================
 SELECT TOP 5 * FROM silver.csv_calendar;
 SELECT TOP 5 * FROM silver.csv_customers;
@@ -12,7 +12,7 @@ SELECT TOP 5 * FROM silver.csv_sales;
 SELECT TOP 5 * FROM silver.csv_stores;
 
 -- ======================================
--- 📅 2. Calendar Table Validations
+--  2. Calendar Table Validations
 -- ======================================
 -- Ensure no NULL dates
 SELECT COUNT(*) AS null_dates FROM silver.csv_calendar WHERE [date] IS NULL;
@@ -24,7 +24,7 @@ SELECT is_weekend, COUNT(*) AS count FROM silver.csv_calendar GROUP BY is_weeken
 SELECT weekday, COUNT(*) AS count FROM silver.csv_calendar GROUP BY weekday ORDER BY count DESC;
 
 -- ======================================
--- 🧍 3. Customers Table Validations
+--  3. Customers Table Validations
 -- ======================================
 -- NULL checks
 SELECT COUNT(*) AS null_emails FROM silver.csv_customers WHERE email IS NULL;
@@ -43,7 +43,7 @@ GROUP BY dwh_email_doman
 ORDER BY count DESC;
 
 -- ======================================
--- 📦 4. Products Table Validations
+--  4. Products Table Validations
 -- ======================================
 -- Products with negative profit margin
 SELECT * FROM silver.csv_products
@@ -55,7 +55,7 @@ FROM silver.csv_products
 GROUP BY dwh_price_category;
 
 -- ======================================
--- 🏬 5. Stores Table Validations
+--  5. Stores Table Validations
 -- ======================================
 -- Store types count
 SELECT dwh_is_franchise, COUNT(*) AS count
@@ -66,7 +66,7 @@ GROUP BY dwh_is_franchise;
 SELECT COUNT(DISTINCT store_id) AS unique_stores FROM silver.csv_stores;
 
 -- ======================================
--- 🧾 6. Sales Table Validations
+--  6. Sales Table Validations
 -- ======================================
 -- Sales with missing keys
 SELECT * FROM silver.csv_sales
@@ -84,7 +84,7 @@ FROM silver.csv_sales
 WHERE ABS(dwh_net_price - ((unit_price * quantity) - discount)) > 0.01;
 
 -- ======================================
--- 🏪 7. Inventory Table Validations
+--  7. Inventory Table Validations
 -- ======================================
 -- Missing inventory levels
 SELECT COUNT(*) AS null_inventory
@@ -97,7 +97,7 @@ FROM silver.csv_inventory
 GROUP BY dwh_is_low_stock;
 
 -- ======================================
--- 🔗 8. Key Relationship Checks
+-- 8. Key Relationship Checks
 -- ======================================
 -- Orphan sales: no matching customer
 SELECT COUNT(*) AS orphan_customers
@@ -118,7 +118,7 @@ LEFT JOIN silver.csv_products p ON s.product_id = p.product_id
 WHERE p.product_id IS NULL;
 
 -- ======================================
--- 🧠 9. Sample Join to Validate Relationships
+--  9. Sample Join to Validate Relationships
 -- ======================================
 SELECT TOP 10
     s.sales_id,
