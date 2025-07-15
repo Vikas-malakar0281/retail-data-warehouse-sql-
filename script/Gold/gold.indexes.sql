@@ -25,35 +25,89 @@ GO
 -- =====================================
 -- Indexes improve JOIN and GROUP BY performance
 
--- Index for sales fact filtering
+-- =====================================
+-- Optimized Index Creation for Gold Layer Queries
+-- =====================================
+
+-- ==================================================
+-- 1. Indexes on silver.csv_sales
+-- Used heavily across most fact views
+-- ==================================================
+
 CREATE NONCLUSTERED INDEX IX_sales_year_month_store_product
-ON silver.csv_sales (dwh_sale_by_year, dwh_sale_by_month, store_id, product_id);
-GO
+ON silver.csv_sales (dwh_sale_by_year, dwh_sale_by_month, store_id, product_id)
+INCLUDE (total_price, discount, quantity);
 
--- Index for customer-based aggregations
-CREATE NONCLUSTERED INDEX IX_sales_customer_time
-ON silver.csv_sales (customer_id, dwh_sale_by_year, dwh_sale_by_month);
+CREATE NONCLUSTERED INDEX IX_sales_customer_year_month
+ON silver.csv_sales (customer_id, dwh_sale_by_year, dwh_sale_by_month)
+INCLUDE (sales_id, total_price, quantity);
 
--- Index for product performance
-CREATE NONCLUSTERED INDEX IX_sales_product_time
-ON silver.csv_sales (product_id, dwh_sale_by_year, dwh_sale_by_month);
+CREATE NONCLUSTERED INDEX IX_sales_product_year_month
+ON silver.csv_sales (product_id, dwh_sale_by_year, dwh_sale_by_month)
+INCLUDE (quantity, total_price);
 
--- Index for inventory snapshot
-CREATE NONCLUSTERED INDEX IX_inventory_product_store_date
-ON silver.csv_inventory (product_id, store_id, stock_date);
 
--- Index for joining calendar
+-- ==================================================
+-- 2. Index on silver.csv_inventory
+-- Used in vw_fact_inventory_snapshot
+-- ==================================================
+
+CREATE NONCLUSTERED INDEX IX_inventory_product_stock_date
+ON silver.csv_inventory (product_id, stock_date)
+INCLUDE (store_id, stock_level);
+
+
+-- ==================================================
+-- 3. Index on silver.csv_calendar
+-- For any date-based joins
+-- ==================================================
+
 CREATE NONCLUSTERED INDEX IX_calendar_date
 ON silver.csv_calendar (date);
 
--- Index for joining customer full name
-CREATE NONCLUSTERED INDEX IX_customers_id_name
-ON silver.csv_customers (customer_id, dwh_full_name);
 
--- Index for joining store data
-CREATE NONCLUSTERED INDEX IX_stores_id_franchise
-ON silver.csv_stores (store_id, dwh_is_franchise);
+-- ==================================================
+-- 4. Index on silver.csv_customers
+-- Used in customer value, monthly summary
+-- ==================================================
 
--- Index for joining product metadata
-CREATE NONCLUSTERED INDEX IX_products_id_category
-ON silver.csv_products (product_id, dwh_price_category);
+CREATE NONCLUSTERED INDEX IX_customers_id
+ON silver.csv_customers (customer_id)
+INCLUDE (dwh_full_name, country);
+
+-- ==================================================
+-- Additional Indexes : You can ignore this indexes if 
+-- you want because our store table has only 200 rows
+-- inside it. Its so small that sql will ignore the index 
+-- and scann the whole table because it is eficient
+-- Its a different story if we have bigger datas.
+-- This indexes can be help full at that time.
+-- ==================================================
+
+/*
+
+-- ==================================================
+-- 5. Index on silver.csv_stores
+-- Used in store revenue, store-category performance
+-- ==================================================
+
+===================================================
+CREATE NONCLUSTERED INDEX IX_stores_franchise
+ON silver.csv_stores (dwh_is_franchise)
+INCLUDE (store_id, store_name, country);
+
+====================================================
+
+
+-- ==================================================
+-- 6. Index on silver.csv_products
+-- Used in product/category performance views
+-- ==================================================
+
+CREATE NONCLUSTERED INDEX IX_products_price_category
+ON silver.csv_products (dwh_price_category)
+INCLUDE (product_id, product_name, category, price, cost);
+
+=====================================================
+
+*/
