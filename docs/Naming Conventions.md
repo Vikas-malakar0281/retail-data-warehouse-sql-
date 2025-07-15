@@ -1,10 +1,10 @@
-# 🧾 Naming Conventions
+#  Naming Conventions
 
 This document outlines the naming conventions used in the **Retail Data Warehouse Project**, designed around the provided dataset. It ensures clarity, consistency, and professional structure across Silver (cleaned) and Gold (analytics) layers.
 
 ---
 
-## 📚 Table of Contents
+##  Table of Contents
 - [General Principles](#general-principles)
 - [Table Naming Conventions](#table-naming-conventions)
   - [Silver Layer](#silver-layer)
@@ -17,7 +17,7 @@ This document outlines the naming conventions used in the **Retail Data Warehous
 
 ---
 
-## 🔧 General Principles
+##  General Principles
 
 - **Style:** Use `snake_case` (lowercase, words separated by underscores)
 - **Language:** English only
@@ -26,9 +26,9 @@ This document outlines the naming conventions used in the **Retail Data Warehous
 
 ---
 
-## 🗂 Table Naming Conventions
+##  Table Naming Conventions
 
-### 🥈 Silver Layer (Cleaned & Transformed)
+###  Silver Layer (Cleaned & Transformed)
 
 - **Pattern:** `csv_<entity>`
 - **Purpose:** Cleaned and standardized tables from raw CSVs.
@@ -40,7 +40,7 @@ This document outlines the naming conventions used in the **Retail Data Warehous
   - `silver.csv_calendar`
   - `silver.csv_stores`
 
-### 🥇 Gold Layer (Business/Analytics)
+###  Gold Layer (Business/Analytics)
 
 - **Pattern:** 
   - `vw_fact_<entity>` for fact views  
@@ -59,7 +59,7 @@ This document outlines the naming conventions used in the **Retail Data Warehous
 
 ---
 
-## 🔑 Column Naming Conventions
+##  Column Naming Conventions
 
 ### Surrogate Keys
 
@@ -90,13 +90,13 @@ This document outlines the naming conventions used in the **Retail Data Warehous
 
 ---
 
-## ✅ Summary
+##  Summary
 
 Following this naming convention ensures:
 
-- ✅ Clean and consistent SQL across the project  
-- 🚀 Efficient debugging and understanding of ETL logic  
-- 📊 Seamless consumption by BI tools like Power BI or Tableau  
+-  Clean and consistent SQL across the project  
+-  Efficient debugging and understanding of ETL logic  
+-  Seamless consumption by BI tools like Power BI or Tableau  
 
 | 📁 CSV File       | 🥈 Silver Table             | 🥇 Gold View                        |
 |------------------|-----------------------------|-------------------------------------|
