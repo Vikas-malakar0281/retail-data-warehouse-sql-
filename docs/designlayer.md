@@ -1,29 +1,30 @@
 # 🧱 ETL Design Layer – Medallion Architecture
 
-This project implements a three-tier **Medallion Architecture** to structure the ETL pipeline into logical layers: **Bronze**, **Silver**, and **Gold**. Each layer serves a specific purpose in the transformation of raw data into business-ready insights.
+This project implements a three-tier **Medallion Architecture** to structure the ETL pipeline into logical layers: **Bronze**, **Silver**, and **Gold**. Each layer transforms the data step-by-step—from raw input to business-ready analytical outputs.
 
 ---
 
-| Category            | 🥉 **Bronze Layer**                                 | 🥈 **Silver Layer**                                         | 🥇 **Gold Layer**                                                     |
-|---------------------|-----------------------------------------------------|-------------------------------------------------------------|------------------------------------------------------------------------|
-| **Definition**       | Extracting original data from source CSV files     | Transforming raw data into quality datasets                 | Business-ready data with indexes, rules, and derived logic            |
-| **Objective**        | Traceability & Debugging                           | Prepare data for analysis                                   | Provide data for reporting and analytics                              |
-| **Objective Type**   | Tables                                              | Tables                                                      | Views                                                                 |
-| **Load Method**      | Full Load (`TRUNCATE` & `INSERT`)                  | Full Load (`TRUNCATE` & `INSERT`)                           | None (views reference silver layer)                                   |
-| **Data Transformation** | As-is                                           | - Data Cleaning<br>- Data Standardization<br>- Data Normalization<br>- Derived Columns<br>- Data Enrichment | - Data Integration<br>- Data Aggregation<br>- Business Logic & Rules |
-| **Data Modeling**    | As-is                                               | As-is                                                       | - Star Schema<br>- Aggregated Objects<br>- Flat Tables                |
-| **Target Audience**  | Data Engineers                                      | Data Engineers, Data Analysts                               | Data Analysts                                                         |
+| Category              | 🥉 **Bronze Layer**                                         | 🥈 **Silver Layer**                                                   | 🥇 **Gold Layer**                                                                 |
+|-----------------------|-------------------------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| **Definition**         | Raw data staging from source CSVs                          | Cleaned and enriched datasets ready for modeling                      | Final reporting layer using dimensional modeling and aggregations                |
+| **Purpose**            | Enable traceability and fast ingestion                     | Ensure quality, consistency, and transformation logic                 | Serve business needs via analytical fact and dimension views                    |
+| **Object Type**        | Tables (`csv_<entity>`)                                    | Tables (`csv_<entity>`)                                               | Views (`vw_fact_<entity>`, `vw_dim_<entity>`)                                   |
+| **Load Method**        | Full load using `TRUNCATE` + `INSERT`                      | Full load using `TRUNCATE` + `INSERT`                                 | Views dynamically reference Silver layer (no physical loading)                  |
+| **Transformations**    | None (raw as-is)                                           | - Data cleaning<br>- Null handling<br>- Type formatting<br>- Enrichment<br>- Derived columns (profit margin, email domain, etc.) | - Aggregations<br>- Business logic<br>- Time-based metrics<br>- Dimensional joins |
+| **Modeling Approach**  | None                                                       | No strict schema—intermediate layer                                   | Star schema: facts + dimensions (denormalized for BI performance)               |
+| **Target Users**       | Data Engineers                                             | Data Engineers, Data Analysts                                         | Business Analysts, BI Tools (Power BI), Reporting Teams                         |
 
 ---
+
 ## 🔁 Layer Flow
 
 ```text
-CSV Files (Raw)
-   ↓
-Bronze Layer — Raw Staging Tables (stg_)
-   ↓
-Silver Layer — Cleaned/Transformed Tables (int_)
-   ↓
-Gold Layer — Fact & Dimension Views (dw_)
-   ↓
-Power BI Dashboards / Analytical Queries
+📁 CSV Files (Raw)
+    ↓
+🥉 Bronze Layer — Raw Staging Tables (e.g., csv_sales, csv_customers)
+    ↓
+🥈 Silver Layer — Cleaned & Transformed Tables (e.g., csv_sales, csv_customers)
+    ↓
+🥇 Gold Layer — Analytical Views (e.g., vw_fact_sales_summary, vw_dim_product)
+    ↓
+📊 Power BI Dashboards / SQL Reporting Queries
