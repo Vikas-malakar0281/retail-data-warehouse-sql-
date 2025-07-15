@@ -1,129 +1,137 @@
-
 # 🏬 Retail Data Warehouse Project (SQL Server + Power BI)
 
-An end-to-end Data Warehouse project designed for a realistic retail business scenario. Built using SQL Server 2022 and Power BI, this project demonstrates modern data warehousing concepts using a layered architecture with ChatGPT-generated sales, product, inventory, and customer data.
+An end-to-end Data Warehouse project built using **SQL Server 2022** and **Power BI**, simulating a realistic retail scenario. The project demonstrates the use of Medallion Architecture to transform raw sales, customer, product, and inventory data into actionable insights.
 
 ---
 
 ## 🚀 Project Objectives
 
-- Design and implement a modern data warehouse from scratch
-- Apply staging → clean → business-layer architecture
-- Use SQL Server and T-SQL for data loading and transformation
-- Create a Power BI dashboard for reporting and insights
+* Design a modern data warehouse from scratch
+* Apply **Bronze → Silver → Gold** architecture
+* Use T-SQL and stored procedures for ETL processes
+* Build a Power BI dashboard on top of Gold Layer views
 
 ---
 
-## 🧱 Architecture
+## 🛡️ Architecture
 
-CSV Data (Raw) <br>
-    ↓  <br>
-[ Staging Tables (stg_) ]         → Bronze Layer <br>
-    ↓ <br>
-[ Clean Tables (int_) ]           → Silver Layer <br>
-    ↓  <br>
-[ Fact & Dimension Tables (dim_) ] → Gold Layer <br>
-    ↓  <br>
-[ Power BI Dashboard ]            → Visualization Layer <br>
+```text
+CSV Files (Raw)
+   ↓
+Bronze Layer  — Raw Staging Tables (bronze.csv_*)
+   ↓
+Silver Layer  — Cleaned & Transformed Tables (silver.csv_*)
+   ↓
+Gold Layer    — Fact & Dimension Views (gold.fact_*, gold.dim_*)
+   ↓
+Power BI Dashboard — Visualization Layer
+```
 
-
-
-- **Staging (stg_)**: Raw data loaded from CSV files
-- **Clean/Intermediate (int_)**: Transformed, joined, cleaned data
-- **Business Layer (dw_)**: Fact and dimension tables for reporting
-- **Power BI**: Final dashboard with KPIs and analytics
+* **Bronze Layer**: Ingest raw CSV files into staging tables using `BULK INSERT`
+* **Silver Layer**: Clean, deduplicate, and enrich data with derived columns
+* **Gold Layer**: Build analytical views with fact and dimension tables
+* **Power BI**: Use Gold views to visualize KPIs and business insights
 
 ---
 
 ## 📦 Dataset Overview
 
-The data is generated using Faker and NumPy to simulate realistic transactions, products, and customer activity. All data is stored in CSV format inside the `datasets/` folder.
+Data is synthetically generated using **Faker** and **NumPy** to simulate real-world customer behavior and transactions. CSV files are located under `/datasets/`.
 
-| Table Name     | Type        | Description                             |
-|----------------|-------------|-----------------------------------------|
-| customers.csv  | Dimension   | Customer info, region, signup date      |
-| products.csv   | Dimension   | Product catalog with price & category   |
-| stores.csv     | Dimension   | Store info and manager details          |
-| calendar.csv   | Dimension   | Dates, months, holidays, etc.           |
-| inventory.csv  | Fact        | Inventory levels over time              |
-| sales.csv      | Fact        | Retail sales transactions               |
+| Table Name    | Type      | Description                              |
+| ------------- | --------- | ---------------------------------------- |
+| customers.csv | Dimension | Customer profiles, signup data, region   |
+| products.csv  | Dimension | Product info, category, pricing          |
+| stores.csv    | Dimension | Store location and type                  |
+| calendar.csv  | Dimension | Time intelligence columns                |
+| inventory.csv | Fact      | Stock levels for each store-product-date |
+| sales.csv     | Fact      | All sales transactions                   |
 
 ---
 
-## 🛠 Tools & Tech Stack
+## 🛠️ Tools & Tech Stack
 
-- **SQL Server 2022**        – Data warehouse engine
-- **SSMS**                   – SQL development & debugging
-- **Power BI**               – Dashboard and reporting
-- **Git/GitHub**             – Version control
+* **SQL Server 2022** — Data warehousing engine
+* **SSMS** — Development and debugging
+* **Power BI** — Visual reporting
+* **GitHub** — Version control and collaboration
 
 ---
 
 ## 📁 Project Structure
-```
 
+```
 retail-data-warehouse-sql/
 |
-├── Datasets/                               # CSV files for staging
+├── datasets/                             # Source CSV files
 |
-├── Script.sql
-|   |
-│   ├── [Bronze Layer] Staging/             # Create & load raw tables
-│   |   
-|   ├── [Silver Layer] Transformations/     # Data cleaning and joins
-|   |
-│   └── [Gold Layer] Reporting/             # Create fact & dimension tables
+├── scripts/
+|   ├── bronze/                           # Staging scripts (load_bronze)
+|   ├── silver/                           # Transform & clean scripts (load_proc)
+|   └── gold/                             # Fact & dimension views + indexing
 |
-├── Power BI/                                # PBIX file and screenshots
+├── docs/                                 # Project documentation
 |
-├── Diagrams/                               # ERD and architecture visuals
+├── powerbi/                              # Dashboard and visuals
 |
-|── README.md                               # You're here!
+├── diagrams/                             # ERD and architectural diagrams
 |
-└── LICENSE                                 # MIT License
-
+├── README.md                             # You’re here!
+|
+└── LICENSE                               # MIT License
 ```
 
 ---
 
 ## 📊 Power BI Dashboard
 
-> Coming soon: Visual report to highlight insights like:
+> Coming Soon: Insights with rich visuals powered by Gold Layer views
 
-- Top-selling products
-- Sales trends by region
-- Inventory vs. sales KPIs
-- Customer behavior over time
+* Regional and Monthly Sales Trends
+* Inventory vs. Sales KPIs
+* High Margin Products and Categories
+* Customer Segmentation & Behavior
 
 ---
 
 ## 🙏 Acknowledgements
 
-This project is **inspired by [@DataWithBaraa](https://github.com/DataWithBaraa)** for the clear architectural approach to building modern data warehouses.
-
-The dataset and transformations have been customized to create a unique project for educational and portfolio purposes.
+* Inspired by [@DataWithBaraa](https://github.com/DataWithBaraa)
+* All data and transformations are unique and designed for portfolio & educational purposes
 
 ---
 
 ## 📌 How to Run This Project
 
-1. Clone this repo  
-2. Create a database in SQL Server:
-3. CREATE DATABASE RetailDW;
-4. Execute scripts from /sql/staging/ to create and load tables
-5. Execute scripts from /sql/staging/ to create and load tables
-6. Run transformations from /sql/transformations/
-7. Build fact/dim tables from /sql/reporting/
-8. Open Power BI and connect to the final database layer
+1. Clone the repository
+2. Create a new database:
+
+   ```sql
+   CREATE DATABASE RetailDW;
+   ```
+3. Execute Bronze scripts to load CSVs:
+
+   ```sql
+   EXEC bronze.load_bronze;
+   ```
+4. Run Silver transformation procedure:
+
+   ```sql
+   EXEC silver.load_proc;
+   ```
+5. Gold views will be auto-refreshed as they are dynamic
+6. Open Power BI and connect to SQL views in the `gold` schema
 
 ---
 
-## 📬 Contact
-If you'd like to collaborate or ask questions:
+## 📩 Contact
 
+Feel free to reach out for collaboration or feedback:
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/vikas-malakar-5a9446354)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge\&logo=linkedin\&logoColor=white)](https://linkedin.com/in/vikas-malakar-5a9446354)
 
+---
 
-🪪 License
-This project is open-source and licensed under the MIT License.
+## 🗋ufe0f License
+
+This project is open-source and licensed under the **MIT License**.
