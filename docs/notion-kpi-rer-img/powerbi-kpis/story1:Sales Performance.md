@@ -19,7 +19,7 @@ SELECT SUM(total_sales) Total_revenue FROM gold.vw_fact_sales_summary
 * Total orders:
 
 ```sql
-SELECT COUNT(sales_id) AS total_orders FROM gold.vw_fact_sales_transactions;
+SELECT COUNT(sales_orders) AS total_orders FROM gold.vw_fact_sales_transactions;
 ```
 
 ---
@@ -95,7 +95,7 @@ ORDER BY product_sales DESC;
 
 ```sql
 SELECT 
-    SUM(total_price) * 1.0 / COUNT(DISTINCT sales_id) AS avg_order_value
+    SUM(total_price) * 1.0 / COUNT(DISTINCT sales_orders) AS avg_order_value
 FROM gold.vw_fact_sales_transactions;
 ```
 
