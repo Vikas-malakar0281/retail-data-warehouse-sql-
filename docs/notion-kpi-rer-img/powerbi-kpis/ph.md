@@ -24,7 +24,7 @@ SELECT COUNT(sales_id) AS total_orders FROM gold.vw_fact_sales_transactions;
 
 ---
 
-![Total Order](docs/notion-kpi-req-img/story1/Total-order.png)
+![2.png](story1/2.png)
 
 ---
 
@@ -36,7 +36,7 @@ SELECT SUM(total_quantity) AS total_quantity_sold FROM gold.vw_fact_sales_summar
 
 ---
 
-![Total Quantity Sold](docs/notion-kpi-req-img/story1/49A8268B-00B5-41F5-BC3B-A1F3DC2BECB0.png)
+![3.png](story1/3.png)
 
 ---
 
@@ -51,7 +51,7 @@ ORDER BY CAST(CONCAT(month, ' 1, ', year) AS DATE);
 
 ---
 
-![Sales Trend](docs/notion-kpi-req-img/story1/731DE957-36ED-40C7-B393-AFCD52C5CC5E.png)
+![4.png](story1/4.png)
 
 ---
 
@@ -69,7 +69,7 @@ ORDER BY store_sales DESC;
 
 ---
 
-![Sales by Store](docs/notion-kpi-req-img/story1/2ca8d44c-fd1a-4f37-9416-db7d8f37fdc6.png)
+![5.png](story1/5.png)
 
 ---
 
@@ -87,7 +87,7 @@ ORDER BY product_sales DESC;
 
 ---
 
-![Sales by Product](docs/notion-kpi-req-img/story1/9BB86B38-5BC0-43C9-90A0-1C4FE71F76E3.png)
+![6.png](story1/6.png)
 
 ---
 
@@ -101,7 +101,7 @@ FROM gold.vw_fact_sales_transactions;
 
 ---
 
-![Average Order Value](docs/notion-kpi-req-img/story1/3463D49B-0BB4-46ED-8EFB-69DE6C692CA2.png)
+![7.png](story1/7.png)
 
 ---
 
@@ -119,4 +119,4 @@ ORDER BY units_sold DESC;
 
 ---
 
-![Top 10 Products](docs/notion-kpi-req-img/story1/3389A230-31C8-4FD3-B070-AF86C1C51A0C.png)
+![8.png](story1/8.png)
