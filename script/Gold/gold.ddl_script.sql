@@ -34,7 +34,7 @@ GO
 -- ===================================================
 CREATE OR ALTER VIEW gold.vw_fact_sales_transactions AS
 SELECT
-    sales_id,                                   -- Unique identifier for each sale
+    sales_id   AS sales_orders,                 -- Unique identifier for each sale
     date,                                       -- Date of the transaction
     dwh_sale_by_year   AS year,                -- Year for date-based filtering
     dwh_sale_by_month  AS month,               -- Month for date-based filtering
@@ -134,3 +134,26 @@ GROUP BY
     i.stock_date,
     i.stock_level;
 GO
+
+-- ===============================================
+-- 6. FACT VIEW: Customer Monthly Purchase Summary
+-- ===============================================
+CREATE OR ALTER VIEW gold.vw_fact_customer_monthly_summary AS
+SELECT
+    cs.customer_id,
+    c.dwh_full_name AS customer_name,
+    cs.dwh_sale_by_year AS year,
+    cs.dwh_sale_by_month AS month,
+    COUNT(DISTINCT cs.sales_id) AS orders_count,
+    SUM(cs.total_price)         AS total_spent,
+    SUM(cs.quantity)            AS total_units
+FROM silver.csv_sales cs
+LEFT JOIN silver.csv_customers c 
+    ON cs.customer_id = c.customer_id
+GROUP BY 
+    cs.customer_id, 
+    c.dwh_full_name, 
+    cs.dwh_sale_by_year, 
+    cs.dwh_sale_by_month;
+GO
+-- Purpose: Track customer purchase behavior over time by month.
