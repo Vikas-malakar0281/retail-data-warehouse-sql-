@@ -25,7 +25,7 @@ SELECT COUNT(sales_id) AS total_orders FROM gold.vw_fact_sales_transactions;
 
 ---
 
-![{Total order}.png](attachment:docs/notion-kpi-req-img/story1/Total-order.png)
+![{Total-order}.png](attachment:docs/notion-kpi-req-img/story1/Total-order.png)
 
 - Total Quantity Sold
 
