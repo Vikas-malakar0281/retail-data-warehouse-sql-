@@ -12,7 +12,7 @@ FROM gold.vw_dim_customer_value
 ORDER BY total_spent DESC;
 ```
 
-![2.png](story2/2.png)
+![1.png](story2/1.png)
 
 - Customer Frequency (Most Orders)
 
@@ -24,7 +24,7 @@ FROM gold.vw_dim_customer_value
 ORDER BY total_orders DESC;
 ```
 
-![{E717A360-9DAE-414D-8049-CB1BD2909A60}.png](attachment:7df50dcc-c763-4ba4-8022-33ca15d2af74:E717A360-9DAE-414D-8049-CB1BD2909A60.png)
+![2.png](story2/2.png)
 
 - Monthly Purchase Trend by Customer
 
@@ -40,7 +40,7 @@ ORDER BY
     CAST(CONCAT(month, ' 1, ', year) AS DATE);
 ```
 
-![{9DD747F7-1D97-45B5-80BE-24B56273DB1C}.png](attachment:70f0ae85-9435-471b-8e50-f0418c1d9a72:9DD747F7-1D97-45B5-80BE-24B56273DB1C.png)
+![3.png](story2/3.png)
 
 - Average Order Value by Customer Segment
 
@@ -52,7 +52,7 @@ FROM gold.vw_dim_customer_value
 ORDER BY avg_order_value DESC;
 ```
 
-![{4066BBEA-A9FC-4688-87D7-58938D740CE7}.png](attachment:f2f2de1f-ccd1-4c64-90f4-0afaa5702629:4066BBEA-A9FC-4688-87D7-58938D740CE7.png)
+![4.png](story2/4.png)
 
 - Seasonal Trend in Customer Purchases
 
@@ -66,4 +66,4 @@ GROUP BY month
 ORDER BY month;
 ```
 
-![{73626DB0-8B12-4270-AB2D-5CB2F3BF9785}.png](attachment:8711f9a7-0402-478a-a5af-02575666cb45:73626DB0-8B12-4270-AB2D-5CB2F3BF9785.png)
+![5.png](story2/5.png)
