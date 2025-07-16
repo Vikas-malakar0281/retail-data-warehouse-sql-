@@ -12,7 +12,7 @@ SELECT SUM(total_sales) Total_revenue FROM gold.vw_fact_sales_summary
 
 ---
 
-![Total Revenue](docs/notion-kpi-req-img/story1/Total-Revenue.png)
+![Total-Revenue.png](docs/notion-kpi-req-img/story1/Total-Revenue.png)
 
 
 ---
