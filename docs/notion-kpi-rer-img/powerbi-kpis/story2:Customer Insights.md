@@ -12,7 +12,7 @@ FROM gold.vw_dim_customer_value
 ORDER BY total_spent DESC;
 ```
 
-![{FD9AB09A-B67B-4FBE-BBC9-9DED60FBB9AC}.png](attachment:7748eda6-89f5-40c4-abd6-6f3909f31948:FD9AB09A-B67B-4FBE-BBC9-9DED60FBB9AC.png)
+![2.png](story2/2.png)
 
 - Customer Frequency (Most Orders)
 
