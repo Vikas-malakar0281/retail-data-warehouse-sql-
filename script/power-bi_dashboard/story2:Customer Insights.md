@@ -1,4 +1,4 @@
-# B. Customer Insight
+# Customer Insight
 
 ## Requirement
 
