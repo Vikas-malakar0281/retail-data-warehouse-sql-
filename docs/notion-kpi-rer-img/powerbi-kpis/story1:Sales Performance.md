@@ -12,7 +12,7 @@ SELECT SUM(total_sales) Total_revenue FROM gold.vw_fact_sales_summary
 
 ---
 
-![{61F979E7-F680-4E43-80F2-B6C75DAF4BA5}.png](attachment:0753c471-8494-4ae0-9040-144a2c0d3d00:30809391-126c-4058-8b92-8bb74d156be3.png)
+![{61F979E7-F680-4E43-80F2-B6C75DAF4BA5}.png](attachment:docs/notion-kpi-req-img/story1/Total-Revenue.png)
 
 ---
 
@@ -24,7 +24,7 @@ SELECT COUNT(sales_id) AS total_orders FROM gold.vw_fact_sales_transactions;
 
 ---
 
-![{4E03481B-0B77-4154-A2BC-BDF7204655AE}.png](attachment:8b79688b-ecb6-4ef8-bede-103812095a4d:4E03481B-0B77-4154-A2BC-BDF7204655AE.png)
+![{4E03481B-0B77-4154-A2BC-BDF7204655AE}.png](attachment:docs/notion-kpi-req-img/story1/Total-order.png)
 
 - Total Quantity Sold
 
