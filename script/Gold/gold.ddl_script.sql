@@ -107,7 +107,7 @@ SELECT
     s.dwh_sale_by_year AS year,                 -- Year from sales to align timeframes
     s.dwh_sale_by_month AS month,              -- Month from sales to align timeframes
     s.store_id,                                 -- Store identifier
-    st.category         AS store_type          -- type od store
+    st.category         AS store_type,          -- type od store
     st.store_name,                              -- Store name for readability
     i.product_id,                               -- Product identifier
     p.product_name,                             -- Product name
@@ -129,7 +129,7 @@ GROUP BY
     s.dwh_sale_by_month,
     s.store_id,
     st.store_name,
-    st.category
+    st.category,
     i.product_id,
     p.product_name,
     p.category,
