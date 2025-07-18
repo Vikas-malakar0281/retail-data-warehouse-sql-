@@ -81,11 +81,10 @@ GO
 CREATE TABLE silver.csv_stores (
     store_id INT,
     store_name VARCHAR(255),
+    dwh_category VARCHAR(50),
     city VARCHAR(100),
     state VARCHAR(100),
     country VARCHAR(100),
-    store_branch1 NVARCHAR(50), -- Parsed from raw data with multiple branches
-    store_branch2 NVARCHAR(50),
     creationdate DATETIME DEFAULT GETDATE()
 );
 
