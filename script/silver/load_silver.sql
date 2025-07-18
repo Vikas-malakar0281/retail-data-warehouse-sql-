@@ -98,16 +98,21 @@ BEGIN
         TRUNCATE TABLE silver.csv_stores;
 
         INSERT INTO silver.csv_stores (
-          [store_id] ,[store_name] ,[dwh_2ndstore_name] ,[dwh_is_franchise] ,[city] ,[state] ,[country]
+          [store_id] ,[store_name] ,[dwh_category] ,[city] ,[state] ,[country]
         )
         SELECT 
             store_id,
-           LTRIM(RTRIM(LEFT(store_name +',', CHARINDEX(',' , store_name +',')-1) ))  AS store_name,
-              CASE WHEN
-                     CHARINDEX(',', store_name) = 0 THEN 'non'
-                     ELSE LTRIM(RTRIM(SUBSTRING(store_name, CHARINDEX(',', store_name) + 1, LEN(store_name))))
-            END AS dwh_2ndstore_name,
-            CASE WHEN store_name like '%,%' THEN 'YES'ELSE 'NO' END AS dwh_is_franchise,
+            ,CASE
+            	  WHEN store_name LIKE '% and Sons' THEN store_name
+            	  WHEN store_name LIKE '%-%' THEN store_name
+            	  WHEN CHARINDEX(',', store_name)>0 THEN  LEFT(store_name, CHARINDEX(',', store_name) - 1)
+            	  WHEN CHARINDEX(' ', store_name)>0 THEN  LEFT(store_name, CHARINDEX(' ', store_name) - 1)
+	        END AS s_name
+        	,CASE
+        		WHEN store_name LIKE '% and Sons' THEN 'u/n'
+        		WHEN store_name LIKE '% %' THEN SUBSTRING(store_name, CHARINDEX(' ', store_name),LEN(store_name))
+        		else 'u/n'
+		    END AS category
              city,
             state,
             country
