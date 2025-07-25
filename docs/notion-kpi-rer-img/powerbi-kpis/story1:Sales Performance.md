@@ -69,7 +69,7 @@ ORDER BY store_sales DESC;
 
 ---
 
-![5.PNG](story1/5.PNG)
+![5.png](story1/5.png)
 
 ---
 
